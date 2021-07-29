@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {height: 100%;}
+    body {
+      height: 100%;
+      margin: 0;
+      background: url(./images/bg.png) no-repeat center;
+    }
+    .title {
+      height: 97px;
+      top: 1%;
+      left: 50%;
+      background: url(./images/head_m.png) center / cover;
+      position: absolute;
+      line-height: 97px;
+      z-index: 8;
+      font-size: 34px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, .9);
+      text-align: center;
+      letter-spacing: .13em;
+      text-shadow: 0 0 12px rgba(36, 161, 250, 1);
+      transform: translateX(-50%);
+    }
+    #bg_video {
+      position: fixed;  
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;  
+      min-height: 100%;  
+      height: auto;  
+      width: auto; 
+    }
+    .t-before, .t-after {
+      position: absolute;
+      top: 0;
+      height: 97px;
+      width: 760px;
+      background: url(./images/head_s.png) no-repeat left center / cover;
+    }
+    .t-before {
+      left: 100%;
+    }
+    .t-after {
+      right: 100%;
+      transform: rotateY(180deg);
+    }
+   
+    .bg-animation {
+      height: 100%;
+      overflow: hidden;
+      position: relative
+    }
+    .circle {
+      position: absolute;
+      width: 2000px;
+      height: 2000px;
+      top: 50%;
+      left: 50%;
+      margin-left: -1000px;
+      margin-top: -1000px;
+      opacity: .06;
+      background: url(./images/circle.png) no-repeat center;
+      animation: 50s linear infinite rotate;
+    }
+    .circle2 {
+      position: absolute;
+      width: 2000px;
+      height: 2000px;
+      top: 50%;
+      left: 50%;
+      margin-left: -1000px;
+      margin-top: -1000px;
+      opacity: .07;
+      background: url(./images/circle2.png) no-repeat center;
+      animation: 60s linear infinite reverse rotate;
+    }
+    @keyframes rotate {
+      0% {transform: rotateZ(0);}
+      100% {transform: rotateZ(360deg);}
+    }
+    .track {
+      position: absolute;
+      width: 678px;
+      height: 210px;
+      top: 50%;
+      left: 50%;
+      margin: -105px 0 0 -339px;
+      background:url(./images/track.png) no-repeat center bottom;
+      transform: rotateZ(15deg);
+    }
+    .track2 {
+      position: absolute;
+      width: 678px;
+      height: 210px;
+      top: 50%;
+      left: 50%;
+      margin: -105px 0 0 -339px;
+      background:url(./images/track.png) no-repeat center bottom;
+      transform: rotateZ(-30deg);
+    }
+    .satellite {
+      position: absolute;
+      width: 65px;
+      height: 38px;
+      offset-path: path("M339.87,0C525.68.31,676,46.42,676,103.25c0,57-151.33,103.25-338,103.25S0,160.27,0,103.25C0,46.42,150.3.31,336.1,0");
+      offset-rotate: -15deg;
+      background: url(./images/satellite.png);
+      animation: 15s linear infinite reverse surround;
+    }
+    .track2 .satellite {
+      width: 101px;
+      height: 58px;
+      background: url(./images/satellite2.png);
+      offset-rotate: 30deg;
+      animation-duration: 30s;
+    }
+    @keyframes surround {
+      0% {opacity: 0.3;offset-distance: 0;}
+      20% {opacity: 0.3;}
+      28% {opacity: 1;}
+      72% {opacity: 1;}
+      80% {opacity: 0.3;}
+      100% {opacity: 0.3;offset-distance: 100%;}
+    }
+    .flow-wrapper {
+      width: 1366px;
+      height: 665px;
+      position: absolute;
+      left: 50%;
+      top: 56%;
+      margin-left: -683px;
+      margin-top: -332.5px;
+    }
+    .arrow-r {
+      position: absolute;
+      width: 70px;
+      height: 19px;
+      background: url(./images/arrow.png) repeat-x center;
+      animation: 4s linear infinite arrowRight;
+    }
+    @keyframes arrowRight {
+      0% {background-position-x: -70px;}
+      100% {background-position-x: 70px;}
+    }
+    .arrow-d {
+      position: absolute;
+      width: 369px;
+      height: 21px;
+      transform: rotateZ(90deg);
+      background: url(./images/arrow.png) repeat-x center;
+      animation: 4s linear infinite arrowDown;
+    }
+    @keyframes arrowDown {
+      0% {background-position-x: -70px;}
+      100% {background-position-x: 70px;}
+    }
+    .step {
+      position: absolute;
+      width: 293px;
+      height: 116px;
+      background: url(./images/menu.png) no-repeat;
+    }
+    .step a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+    }
+    .step.s2:hover, .step.s3:hover, .step.s6:hover, .step.s7:hover, .step.s8:hover {
+      background-position-x: -293px;
+    }
+    .step.s1 a {
+      display: block;
+      text-decoration: none;
+      position: absolute;
+      width: 226px;
+      height: 54px;
+      background-image: url(./images/sub_menu.png);
+    }
+    .step.s1 a:hover {
+      background-position-x: -226px;
+    }
+    .step.s4 a {
+      display: block;
+      text-decoration: none;
+      position: absolute;
+      width: 226px;
+      height: 54px;
+      background-image: url(./images/sub_menu.png);
+    }
+    .step.s4 a:hover {
+      background-position-x: -226px;
+    }
+    .step.s5 a {
+      display: block;
+      text-decoration: none;
+      position: absolute;
+      width: 226px;
+      height: 54px;
+      background-image: url(./images/sub_menu.png);
+    }
+    .step.s5 a:hover {
+      background-position-x: -226px;
+    }
+    .s1::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 112px;
+      left: 26px;
+      height: 202px;
+      width: 45px;
+      z-index: 1;
+      background: url(./images/link3.png) no-repeat center;
+    }
+    .s1 {background-position: 0 0;}
+    .s2 {background-position: 0 -232px;}
+    .s3 {background-position: 0 -348px;}
+    .s4 {background-position: -293px 0;}
+    .s4::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 112px;
+      left: 26px;
+      height: 130px;
+      width: 45px;
+      z-index: 1;
+      background: url(./images/link2.png) no-repeat center;
+    }
+    .s5 {background-position: 0 -116px;}
+    .s5::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 112px;
+      left: 26px;
+      height: 130px;
+      width: 45px;
+      z-index: 1;
+      background: url(./images/link2.png) no-repeat center;
+    }
+    .s6 {background-position: 0 -464px;}
+    .s7 {background-position: 0 -580px;}
+    .s8 {background-position: 0 -696px;}
+    .s1-1 {top: 142px; left: 67px; background-position: 0 0;}
+    .s1-2 {top: 214px; left: 67px; background-position: 0 -54px;}
+    .s1-3 {top: 284px; left: 67px; background-position: 0 -108px;}
+    .s4-1 {top: 142px;left: 67px; background-position: 0 -162px;}
+    .s4-2 {top: 214px;left: 67px; background-position: 0 -216px;}
+    .s5-1 {top: 142px;left: 67px; background-position: 0 -270px;}
+    .s5-2 {top: 213px;left: 67px; background-position: 0 -324px;}
+    .preview {position: absolute; top: 48%; left: 50%; margin: -106px 0 0 -105px; width: 210px; height: 212px; background: url(./images/preview.png) no-repeat 0 center;}
+    .preview:hover {background-position-x: -210px;}
+    .preview a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <video id="bg_video" autoplay loop muted>
+    <source src="./images/main.mp4" type="video/mp4">
+  </video>
+  <div class="title">
+    <div class="t-before"></div>
+    <div class="t-after"></div>
+    监测流程
+  </div>
+  <div class="bg-animation">
+    <div class="track">
+      <div class="satellite"></div>
+    </div>
+    <div class="track2">
+      <div class="satellite"></div>
+    </div>
+    <div class="circle"></div>
+    <div class="circle2"></div>
+  </div>
+  <div class="flow-wrapper">
+    <div class="step s1" style="top: 10px; left: 0;">
+      <a href="#" class="s1-1"></a>
+      <a href="#" class="s1-2"></a>
+      <a href="#" class="s1-3"></a>
+    </div>
+    <div class="arrow-r" style="top: 69px; left: 290px;"></div>
+    <div class="step s2" style="top: 10px; left: 357px;"><a href=""></a></div>
+    <div class="arrow-r" style="top: 69px; left: 647px;"></div>
+    <div class="step s3" style="top: 10px; left: 714px;"><a href=""></a></div>
+    <div class="arrow-r" style="top: 69px; left: 1004px;"></div>
+    <div class="step s4" style="top: 10px; left: 1071px;">
+      <a href="#" class="s4-1"></a>
+      <a href="#" class="s4-2"></a>
+    </div>
+    <div class="arrow-r" style="top: 69px; right: -65px;"></div>
+    <div class="arrow-d" style="top: 256px; right: -246px;"></div>
+    <div class="arrow-r" style="top: 445px; right: -65px; transform: rotateZ(180deg);"></div>
+    <div class="step s5" style="top: 389px; left: 1071px;">
+      <a href="#" class="s5-1"></a>
+      <a href="#" class="s5-2"></a>
+    </div>
+    <div class="arrow-r" style="top: 445px; left: 1004px;transform: rotateZ(180deg);"></div>
+    <div class="step s6" style="top: 389px; left: 714px;"><a href=""></a></div>
+    <div class="arrow-r" style="top: 445px; left: 647px;transform: rotateZ(180deg);"></div>
+    <div class="step s7" style="top: 389px; left: 357px;"><a href=""></a></div>
+    <div class="arrow-r" style="top: 445px; left: 290px;transform: rotateZ(180deg);"></div>
+    <div class="step s8" style="top: 389px; left: 0;"><a href=""></a></div>
+  </div>
+  <div class="preview"><a href=""></a></div>
+</body>
+</html>
